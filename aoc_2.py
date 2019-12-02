@@ -5,6 +5,33 @@ ADD = 1
 MUL = 2
 EOF = 99
 
+#2.1
+opcodeIndex = 0
+
+input[1] = 12
+input[2] = 2
+
+while True:
+    opcode = input[opcodeIndex]
+    if opcode == EOF:
+        break
+
+    op1 = input[input[opcodeIndex+1]]
+    op2 = input[input[opcodeIndex+2]]
+    dest = input[opcodeIndex+3]
+
+    opcodeIndex = opcodeIndex + 4
+    
+    if opcode == ADD:
+        input[dest] = op1 + op2
+    if opcode == MUL:
+        input[dest] = op1 * op2
+
+print("2.1 solution")
+print(input[0])
+
+
+#2.2
 for x in range(0, 100):
     for y in range(0, 100):
         input = list(resetInput)
@@ -31,5 +58,5 @@ for x in range(0, 100):
                 input[dest] = op1 * op2
             
         if input[0] == 19690720:
-            print(x)
-            print(y)
+            print("2.2 solution")
+            print(str(100 * x + y))
